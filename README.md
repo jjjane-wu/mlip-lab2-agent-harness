@@ -9,8 +9,8 @@ A simple e-commerce front-end built with **React 19**, **Vite 8**, and **Tailwin
     <img src="https://img.shields.io/badge/React_Router-v7-red?logo=react-router&logoColor=white" alt="React Router v7" />
     <img src="https://img.shields.io/badge/React_Hook_Form-blue?logo=react-hook-form&logoColor=white" alt="React Hook Form" />
     <img src="https://img.shields.io/badge/Lucide_React-gray?logo=lucide&logoColor=white" alt="Lucide React" />
-    <a href="https://rebex-ss.vercel.app/" target="_blank">
-        <img src="https://img.shields.io/badge/Live_Demo-green?logo=vercel&logoColor=white" alt="Live Demo" />
+    <a href="https://rebex-ss.rahafebx.workers.dev/" target="_blank">
+        <img src="https://img.shields.io/badge/Cloudflare_Pages-blue?logo=cloudflare&logoColor=white" alt="Cloudflare Pages" />
     </a>
 </p>
 
