@@ -1,80 +1,164 @@
-# REBEX Shop
+# Lab 2: Coding Agents and Agent Harnesses
 
-A simple e-commerce front-end built with **React 19**, **Vite 8**, and **Tailwind CSS v4**. Features product browsing, cart management, checkout flow, and authentication — all client-side with localStorage persistence.
+In this lab, you will use an AI coding agent for software testing and compare a baseline workflow with an enhanced **agent harness** using Playwright and a reusable Skill.
 
-<p align="center">
-    <img src="https://img.shields.io/badge/React-19-blue?logo=react&logoColor=white" alt="React 19" />
-    <img src="https://img.shields.io/badge/Vite-8-yellow?logo=vite&logoColor=white" alt="Vite 8" />
-    <img src="https://img.shields.io/badge/TailwindCSS-v4-blue?logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
-    <img src="https://img.shields.io/badge/React_Router-v7-red?logo=react-router&logoColor=white" alt="React Router v7" />
-    <img src="https://img.shields.io/badge/React_Hook_Form-blue?logo=react-hook-form&logoColor=white" alt="React Hook Form" />
-    <img src="https://img.shields.io/badge/Lucide_React-gray?logo=lucide&logoColor=white" alt="Lucide React" />
-    <a href="https://rebex-ss.rahafebx.workers.dev/" target="_blank">
-        <img src="https://img.shields.io/badge/Cloudflare_Pages-blue?logo=cloudflare&logoColor=white" alt="Cloudflare Pages" />
-    </a>
-</p>
+You may use the coding agent you normally work with, as long as it can inspect and modify a local repository.
 
-## Tech Stack
+To receive credit for this lab, show your work to the TA during recitation.
 
-- **React 19** — Functional components, hooks, Context API
-- **Vite 8** — Fast dev server and build tool
-- **Tailwind CSS v4** — Utility-first styling with dark mode
-- **React Router v7** — Client-side routing
-- **React Hook Form** — Form state and validation
-- **Lucide React** — Icon library
+## Deliverables
 
+- [ ] Use a coding agent with its default setup to generate tests for the shopping cart functionality.
+- [ ] Enhance the agent harness with Playwright and a reusable web-testing Skill, then test the checkout workflow end-to-end.
+- [ ] Explain to the TA what value the enhanced harness added, including your choice of Playwright CLI or MCP and the role of the Skill.
 
-## Features
+## Getting started
 
-- Product catalog with rating, discount badges, and price display
-- Shopping cart with quantity controls (add, remove, update)
-- Checkout form with validation
-- User authentication (login / signup) with localStorage persistence
-- Theme toggle (light / dark / system)
-- Responsive layout with mobile hamburger menu
-
-## Getting Started
+Clone the starter repository and install dependencies:
 
 ```bash
+git clone https://github.com/jcortega-projects/mlip-lab2-agent-harness.git
+cd mlip-lab2-agent-harness
 npm install
+npm test
+```
+
+Start the application with:
+
+```bash
 npm run dev
 ```
 
-## Project Structure
+Create a branch for Part 1:
 
-```
-src/
-├── components/        # Reusable UI components (Navbar, ProductCard, Rating, Price, Breadcrumb, FormField, ThemeToggle, Container)
-├── context/           # React Context providers (Auth, Cart, Theme)
-├── data/              # Static product data
-├── layout/            # Main layout with header/footer
-├── pages/             # Route pages (Home, Auth, Cart, Checkout, ProductDetails, NotFound)
-├── App.jsx            # Route definitions
-└── main.jsx           # App entry point with providers
+```bash
+git switch -c part1-baseline
 ```
 
-## Documentation
+## Part 1: Baseline Coding Agent
 
-- [React Basics](./Doc/react-basics.md) — Context API, hooks, component lifecycle
-- [Libraries](./Doc/libraries.md) — React Hook Form, React Router, TanStack Query, SWR, Tailwind CSS, Lucide Icons
+Use your coding agent with its default setup. Do not add custom Skills, Playwright, or MCP yet.
 
-## Scripts
+Give the agent the following task:
 
-| Command           | Description          |
-| ----------------- | -------------------- |
-| `npm run dev`     | Start dev server     |
-| `npm run build`   | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint`    | Run ESLint           |
+> Write automated tests for the shopping cart functionality of this application.
+>
+> At minimum, cover:
+> - adding a product to the cart;
+> - increasing and decreasing product quantity;
+> - removing an item;
+> - verifying that total item count and total price update correctly.
+>
+> Run the tests and make sure they pass.
+>
+> Do not modify the application solely to make the tests pass.
 
----
-<div align="center">
-  <h3>📝 License</h3>
-  <p><a href="LICENSE">MIT</a> © 2026 - Feel free to use and adapt</p>
-</div>
+### Checkoff
 
-<div align="center">
-  <h3>💡 Feedback</h3>
-  <p>If you have suggestions or improvements, please contribute!</p>
-  <p>See <a href="CONTRIBUTING.md">Contributing Guidelines</a></p>
-</div>
+Show the TA:
+
+- the generated tests and test results;
+- one thing the agent did well;
+- one thing that could be improved.
+
+Save your work:
+
+```bash
+git add .
+git commit -m "Complete Part 1 baseline"
+git switch main
+git switch -c part2-enhanced
+```
+
+Part 2 should begin from the original starter application.
+
+## Part 2: Enhance the Agent Harness
+
+For this part, add:
+
+1. Playwright for browser-based testing; and
+2. a reusable web-testing Skill.
+
+If possible, use the same coding agent and model as in Part 1.
+
+### 1. Choose Playwright CLI or MCP
+
+Choose one:
+
+- **Playwright CLI / test runner**
+- **Playwright MCP**
+
+Configure your choice so the agent can interact with the running application.
+
+Be ready to explain to the TA:
+
+- the difference between CLI and MCP;
+- why you chose one;
+- one tradeoff of your choice.
+
+### 2. Complete the web-testing Skill
+
+Use the template:
+
+```text
+skill-template/web-testing/SKILL.md
+```
+
+Copy it into the project-level Skill location supported by your coding agent and complete the TODOs.
+
+The Skill should contain reusable guidance for web testing rather than instructions specific to this checkout task.
+
+Start a new agent session after configuring the Skill.
+
+### 3. Test the checkout workflow
+
+Make sure the application is running:
+
+```bash
+npm run dev
+```
+
+Give the agent the following task:
+
+> Write automated end-to-end tests for the checkout workflow of this application.
+>
+> Before writing the final tests, use Playwright to explore the running application through a real browser.
+>
+> Consider successful and unsuccessful interactions, important state changes, and relevant edge cases.
+>
+> Use the web-testing Skill and your configured Playwright setup.
+>
+> The final tests must be Playwright end-to-end tests.
+>
+> Run the tests and investigate failures. Determine whether a failure is caused by the test or may indicate an application defect.
+>
+> Do not modify the application solely to make a failing test pass.
+
+### Checkoff
+
+Show the TA:
+
+- your completed `SKILL.md`;
+- your Playwright setup and browser interaction;
+- the generated E2E tests and results;
+- one example of how the Skill affected the agent's behavior;
+- any unexpected behavior or potential defect you investigated.
+
+Also explain what Playwright enabled the agent to do that was different from Part 1.
+
+## Part 3: Reflection
+
+Using your results from Parts 1 and 2, discuss with the TA:
+
+- What value did the Skill add beyond the prompt?
+- What did Playwright add to the agent harness?
+- Did the enhanced harness change the agent's behavior?
+- What still required human judgment?
+- When would the extra harness complexity be worth using?
+
+## Additional resources
+
+- [Agent Skills specification](https://agentskills.io/)
+- [Playwright](https://playwright.dev/)
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
