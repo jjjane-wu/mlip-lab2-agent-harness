@@ -12,7 +12,8 @@
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "demo:checkout": "SLOWMO=600 playwright test -g \"can place an order\" --headed --workers=1 --trace on"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",

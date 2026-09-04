@@ -17,7 +17,11 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: {
+        ...devices["Desktop Chrome"],
+        // SLOWMO=600 npx playwright test --headed  -> watchable live demo
+        launchOptions: { slowMo: Number(process.env.SLOWMO) || 0 },
+      },
     },
   ],
   webServer: {
